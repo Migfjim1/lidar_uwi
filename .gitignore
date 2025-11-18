@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+/data
+lidar_processing.R
+.DS_Store

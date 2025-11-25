@@ -17,19 +17,17 @@ Raw LiDAR data is stored as las files. The las files used for this project can b
 
 Raw las files can be downloaded under the data tab. You can also download DSM and DTM rasters in this tab if you wish to forego the LiDAR processing stage. If you are unsure of what files you need but know the area you want to analyze, use the viewer tab to select only the neccesary files. 
 
-BEWARE! LiDAR data is infamous for its aggregious filesizes. Make sure you have proper storage and processing power before considering LiDAR analysis.
+BEWARE! LiDAR data is infamous for its aggregious filesizes. Make sure you have proper storage and processing power before considering LiDAR analysis. We specifically recommend storing raw .las files and rasterized output on an external drive if converting across broad extents (e.g. all of Cook County).
 
 [Back to top ⤒](#generating-landscape-elevation-rasters-from-raw-lidar-data)
 
 ## Description of scripts
 
-### setup.R
+### setup.R -- This script is called at the top of subsequent scripts. It loads/installs necessary packages.
 
-### lidar_processing_folderloop.R
-include that they have to change filenames
+### lidar_processing_folderloop.R -- This script reads in .las files, converts them into rasters, and save them as rasters. You will need to edit folder paths to where you're storing .las files and the folder where you'd like to store output. Additionally, we stored .las files in folders of ~200 files, as we found that stitching rasters together larger than that tended to crash our R environment.
 
-### stitch_rast.R
-include that they have to change filenames
+### stitch_rast.R -- This script can be used to stitch together multiple rasters. Again, we found that attempting to rasterize across a large aggregation of .las files crashed our R environment, so we instead created rasterized output in ~200-file 'chunks.' We used this script to stitch them together.
 
 [Back to top ⤒](#generating-landscape-elevation-rasters-from-raw-lidar-data)
 

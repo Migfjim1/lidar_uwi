@@ -12,7 +12,8 @@ packageLoad <-
   }
 
 # create a string of package names 
-packages <- c('lidR',
+packages <- c('gdalUtilities',
+              'lidR',
               'R.utils',
               'terra')
 

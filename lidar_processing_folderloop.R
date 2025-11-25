@@ -1,11 +1,17 @@
 source("setup.R")
 
+# set filepath for hard drive - I suggest running off a drive (inputs=7TB, outputs=107GB)
+data_dir <-"/Volumes/LaCie/uwi/lidar" # change folder path for drive
+cook_fold <- "cook-las5" # CHANGE FOR NEW FOLDER - could set to loop, but like to check after each
+
 # set folder paths
-las_parent <- '/Volumes/LaCie/uwi/cook-las5' # CHANGE FOR NEW FOLDER - could set to loop, but like to check after each
-rds_folder <- '/Users/mjimenez/Library/Mobile Documents/com~apple~CloudDocs/Desktop/uwi/projects/lidar_cook/data/cook-las5/rds_processed'
-rast_folder <- '/Users/mjimenez/Library/Mobile Documents/com~apple~CloudDocs/Desktop/uwi/projects/lidar_cook/data/cook-las5/raster_processed'
-dir.create(rds_folder, showWarnings = FALSE)
-dir.create(rast_folder, showWarnings = FALSE)
+las_parent <- paste0(data_dir, '/input/', cook_fold) 
+rast_folder <- paste0(data_dir, '/output/', cook_fold, "/raster_processed")
+dir.create(rast_folder, showWarnings = FALSE, recursive = TRUE)
+
+# if for some reason want to save rds files, uncomment this chunk and the writing lines 110-115
+# rds_folder <- paste0(data_dir, '/output/', cook_fold, "/rds_processed")
+# dir.create(rds_folder, showWarnings = FALSE)
 
 # set resolution of output raster
 res <- 1  # raster resolution
@@ -15,9 +21,6 @@ folder_num <- basename(las_parent)
 
 # get list of subfolders (1–10)
 subfolders <- list.dirs(las_parent, recursive = FALSE, full.names = TRUE)
-
-# temporarily start at subfolder 3
-subfolders <- subfolders[3:length(subfolders)] ## REMOVE LATER
 
 # loop through each subfolder
 for (sub in subfolders) {
@@ -104,12 +107,12 @@ for (sub in subfolders) {
   ################ steps we only want to do once per subfolder ################
   
   # save to rds (with folder/subsection in name)
-  saveRDS(tree_chms_list,
-          file = file.path(rds_folder,
-                           paste0("tree_chms_list_", folder_num, "_s", subsection, ".rds")))
-  saveRDS(build_chms_list,
-          file = file.path(rds_folder,
-                           paste0("build_chms_list_", folder_num, "_s", subsection, ".rds")))
+  # saveRDS(tree_chms_list,
+  #         file = file.path(rds_folder,
+  #                          paste0("tree_chms_list_", folder_num, "_s", subsection, ".rds")))
+  # saveRDS(build_chms_list,
+  #         file = file.path(rds_folder,
+  #                          paste0("build_chms_list_", folder_num, "_s", subsection, ".rds")))
   
   # remove names from the list
   tree_chms_list <- unname(tree_chms_list)

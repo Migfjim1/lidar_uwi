@@ -23,11 +23,14 @@ BEWARE! LiDAR data is infamous for its aggregious filesizes. Make sure you have 
 
 ## Description of scripts
 
-### setup.R -- This script is called at the top of subsequent scripts. It loads/installs necessary packages.
+### setup.R
+This script is called at the top of subsequent scripts. It loads/installs necessary packages.
 
-### lidar_processing_folderloop.R -- This script reads in .las files, converts them into rasters, and save them as rasters. You will need to edit folder paths to where you're storing .las files and the folder where you'd like to store output. Additionally, we stored .las files in folders of ~200 files, as we found that stitching rasters together larger than that tended to crash our R environment.
+### lidar_processing_folderloop.R
+This script reads in .las files, converts them into rasters, and save them as .tif files. You will need to edit folder paths to where you're storing .las files and the folder where you'd like to store output. Additionally, we stored .las files in folders of ~200 files, as we found that stitching rasters together larger than that tended to crash our R environment.
 
-### stitch_rast.R -- This script can be used to stitch together multiple rasters. Again, we found that attempting to rasterize across a large aggregation of .las files crashed our R environment, so we instead created rasterized output in ~200-file 'chunks.' We used this script to stitch them together.
+### stitch_rast.R
+This script can be used to stitch together multiple rasters. Again, we found that attempting to rasterize across a large aggregation of .las files crashed our R environment, so we instead created rasterized output in ~200-file 'chunks.' We used this script to stitch them together.
 
 [Back to top ⤒](#generating-landscape-elevation-rasters-from-raw-lidar-data)
 

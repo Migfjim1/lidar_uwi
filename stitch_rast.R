@@ -4,7 +4,7 @@ source("setup.R")
 data_dir <-"/Volumes/LaCie/uwi/lidar" # change folder path for drive
 
 # set folder paths
-tile_dir <- paste0(data_dir,"/output/cook-las4") # this is the folder with the individual .tifs
+tile_dir <- paste0(data_dir,"/output") # this is the folder with the individual .tifs
 mosaic_dir <- paste0(tile_dir,"/mosaics") # this is the folder where you'll output stitched .tifs
 dir.create(mosaic_dir, showWarnings = FALSE, recursive = TRUE)
 
